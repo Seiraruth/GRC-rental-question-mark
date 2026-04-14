@@ -27,7 +27,8 @@ class StoreCarRequest extends FormRequest
             'color' => 'required|string',
             'transmission' => 'required|in:AT,MT',
             'price_12h' => 'required|numeric',
-            'price_24h' => 'required|numeric'
+            'price_24h' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048' // max 2mb
         ];
     }
 }

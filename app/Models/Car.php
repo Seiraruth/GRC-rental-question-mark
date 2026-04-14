@@ -16,6 +16,7 @@ class Car extends Model
         'transmission',
         'price_12h',
         'price_24h',
+        'image',
         'is_available'
     ];
 }

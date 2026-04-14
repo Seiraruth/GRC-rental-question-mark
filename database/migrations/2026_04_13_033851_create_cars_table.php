@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->integer('price_12h');
             $table->integer('price_24h');
 
+            $table->string('image')->nullable();
+
             $table->boolean('is_available')->default(true); // Status Unit
             $table->timestamps();
         });
