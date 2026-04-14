@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\DTOs\CarDTO;
 use App\Http\Requests\StoreCarRequest;
+use App\Models\Car;
 use App\Service\CarService;
 
 class CarController extends Controller
@@ -16,7 +17,12 @@ class CarController extends Controller
 
     public function index()
     {
-        return "Halaman Daftar Mobil Berhasil Diakses!";
+        return $this->carService->getAllCars();
+    }
+
+    public function show(Car $car)
+    {
+        return $car;
     }
 
     public function store(StoreCarRequest $request)
@@ -31,5 +37,25 @@ class CarController extends Controller
         $this->carService->createCar($dto);
 
         return redirect()->route('cars.index')->with('success', 'Mobil berhasil ditambah!');
+    }
+
+    public function edit(Car $car)
+    {
+        return 'Ini halaman edit' . $car;
+    }
+
+    public function update(StoreCarRequest $request, Car $car)
+    {
+        $dto = CarDTO::fromRequest($request->validated(), $request->file('image'));
+
+        $this->carService->updateCar($car, $dto);
+
+        return redirect()->route('cars.index')->with('success', 'Data mobil diperbarui');
+    }
+
+    public function destroy(Car $car)
+    {
+        $this->carService->deleteCar($car);
+        return redirect()->route('cars.index')->with('success', 'Mobil berhasi dihapus');
     }
 }
