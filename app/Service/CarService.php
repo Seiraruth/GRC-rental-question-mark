@@ -14,14 +14,22 @@ class CarService
    */
   public function createCar(CarDTO $carDTO): Car
   {
-    return Car::create([
+    $data = [
       'name' => $carDTO->name,
       'plate_code' => $carDTO->plate_code,
       'color' => $carDTO->color,
       'transmission' => $carDTO->transmission,
       'price_12h' => $carDTO->price_12h,
       'price_24h' => $carDTO->price_24h
-    ]);
+    ];
+
+    if ($carDTO->image) {
+      // Store to storage/app/public/cars
+      $path = $carDTO->image->store('cars', 'public');
+      $data['image'] = $path;
+    }
+
+    return Car::create($data);
   }
 
 }

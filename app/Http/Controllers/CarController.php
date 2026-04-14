@@ -22,7 +22,10 @@ class CarController extends Controller
     public function store(StoreCarRequest $request)
     {
         // Change to dto
-        $dto = CarDTO::fromRequest($request->validated());
+        $dto = CarDTO::fromRequest(
+            $request->validated(),
+            $request->file('image')
+        );
 
         // Call Car Service
         $this->carService->createCar($dto);
