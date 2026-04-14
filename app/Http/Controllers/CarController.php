@@ -7,6 +7,7 @@ use App\DTOs\CarDTO;
 use App\Http\Requests\StoreCarRequest;
 use App\Models\Car;
 use App\Service\CarService;
+use Illuminate\View\View;
 
 class CarController extends Controller
 {
@@ -17,12 +18,18 @@ class CarController extends Controller
 
     public function index()
     {
-        return $this->carService->getAllCars();
+        $cars = $this->carService->getAllCars();
+        return view('cars.index', $cars);
     }
 
     public function show(Car $car)
     {
-        return $car;
+        return view('cars.show', compact('car'));
+    }
+
+    public function create(): View
+    {
+        return view('cars.create');
     }
 
     public function store(StoreCarRequest $request)
@@ -41,7 +48,7 @@ class CarController extends Controller
 
     public function edit(Car $car)
     {
-        return 'Ini halaman edit' . $car;
+        return view('cars.edit', compact('car'));
     }
 
     public function update(StoreCarRequest $request, Car $car)
