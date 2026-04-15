@@ -14,22 +14,22 @@ return new class extends Migration {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('car_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
 
-            // Data Customer
             $table->string('customer_name');
             $table->string('whatsapp_number');
 
-            // Time Logic (In and Out Time)
             $table->dateTime('start_date');
-            $table->integer('duration_hours'); // 12h or 24h
+            $table->integer('duration_hours');
+            $table->dateTime('end_date');
 
-            // Payment Logic
             $table->integer('total_price');
-            $table->integer('dp_amount')->default(0);
-            $table->integer('remains_payment'); // total - dp
+            $table->integer('dp_amount')->default(0); // Bisa diisi Admin pas approve
+            $table->integer('remains_payment');
 
+            // Ini kunci buat "Approve" Admin
             $table->enum('status', ['pending', 'active', 'completed', 'cancelled'])->default('pending');
-            $table->text('notes')->nullable(); // For collateral records (KTP/Motorcycle)
+            $table->text('notes')->nullable();
 
             $table->timestamps();
         });
