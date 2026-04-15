@@ -19,4 +19,9 @@ class Car extends Model
         'image',
         'is_available'
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }
