@@ -1,11 +1,15 @@
+{{-- Use Guest Layout --}}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center">
     <div class="w-full max-w-md">
         <!-- Card Container -->
@@ -40,17 +44,10 @@
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                         {{ __('Email') }}
                     </label>
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        value="{{ old('email', $request->email) }}"
-                        required
-                        autofocus
-                        autocomplete="username"
+                    <input id="email" type="email" name="email" value="{{ old('email', $request->email) }}" required
+                        autofocus autocomplete="username"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                        placeholder="nama@email.com"
-                    />
+                        placeholder="nama@email.com" />
                     @error('email')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -61,15 +58,9 @@
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
                         {{ __('Password') }}
                     </label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        required
-                        autocomplete="new-password"
+                    <input id="password" type="password" name="password" required autocomplete="new-password"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                        placeholder="••••••••"
-                    />
+                        placeholder="••••••••" />
                     @error('password')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -80,34 +71,25 @@
                     <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">
                         {{ __('Konfirmasi Password') }}
                     </label>
-                    <input
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        required
+                    <input id="password_confirmation" type="password" name="password_confirmation" required
                         autocomplete="new-password"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                        placeholder="••••••••"
-                    />
+                        placeholder="••••••••" />
                     @error('password_confirmation')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Reset Button -->
-                <button
-                    type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-6"
-                >
+                <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-6">
                     {{ __('Reset Password') }}
                 </button>
 
                 <!-- Back to Login -->
                 <div class="text-center mt-6">
-                    <a
-                        href="{{ route('login') }}"
-                        class="text-indigo-600 hover:text-indigo-700 font-medium transition text-sm"
-                    >
+                    <a href="{{ route('login') }}"
+                        class="text-indigo-600 hover:text-indigo-700 font-medium transition text-sm">
                         {{ __('Kembali ke Login') }}
                     </a>
                 </div>
@@ -120,4 +102,5 @@
         </div>
     </div>
 </body>
+
 </html>
