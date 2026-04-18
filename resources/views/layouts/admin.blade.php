@@ -16,23 +16,34 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-  <div class="min-h-screen bg-gray-100">
+<body class="font-sans antialiased bg-gray-50" x-data="{ open: false }">
+  <div class="flex min-h-screen overflow-hidden">
+
     @include('layouts.navigation')
 
-    <!-- Page Heading -->
-    @if (isset($header))
-      <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          {{ $header }}
-        </div>
-      </header>
-    @endif
+    <div class="flex-1 flex flex-col min-h-screen transition-all duration-300 bg-gray-50 md:ml-64">
 
-    <!-- Page Content -->
-    <main>
-      {{ $slot }}
-    </main>
+      <header class="md:hidden bg-white border-b px-4 py-3 flex items-center justify-between sticky top-0 z-20">
+        <span class="font-bold text-emerald-600">GRC Admin</span>
+        <button @click="open = true" class="p-2 rounded-lg bg-gray-100 text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </header>
+
+      @if (isset($header))
+        <header class="bg-white border-b border-gray-100 sticky top-0 z-10 hidden md:block">
+          <div class="px-8 py-5">
+            {{ $header }}
+          </div>
+        </header>
+      @endif
+
+      <main class="flex-1 p-4 sm:p-6 lg:p-8">
+        {{ $slot }}
+      </main>
+    </div>
   </div>
 </body>
 
