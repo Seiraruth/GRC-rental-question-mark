@@ -14,11 +14,21 @@ class BookingService
     $start = Carbon::parse($startDate);
     $end = $start->copy()->addHours((int) $durationHours);
 
-    // Ambil harga berdasarkan kolom di database lu
-    if ((int) $durationHours === 12) {
+    // Hitung harga dasar + jam tambahan
+    $baseHours = $durationHours >= 24 ? 24 : 12;
+    $extraHours = $durationHours - $baseHours;
+
+    if ($baseHours === 12) {
       $totalPrice = $car->price_12h;
+      $pricePerExtraHour = $car->price_12h / 12;
     } else {
       $totalPrice = $car->price_24h;
+      $pricePerExtraHour = $car->price_24h / 24;
+    }
+
+    // Tambahkan biaya jam tambahan
+    if ($extraHours > 0) {
+      $totalPrice += $extraHours * $pricePerExtraHour;
     }
 
     return [
