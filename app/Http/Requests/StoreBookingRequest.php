@@ -26,7 +26,8 @@ class StoreBookingRequest extends FormRequest
             'customer_name' => 'required|string|max:255',
             'whatsapp_number' => 'required|string|max:20',
             'start_date' => 'required|date',
-            'duration_hours' => 'required|in:12,24',
+            'duration_type' => 'required|in:12,24',
+            'extra_hours' => 'nullable|numeric|min:0',
             'notes' => 'nullable|string'
         ];
     }
