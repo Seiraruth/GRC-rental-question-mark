@@ -37,4 +37,27 @@ class StoreCarRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpg,png|max:2048',
         ];
     }
+
+    /**
+     * Custom validation error messages in Indonesian language
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama mobil wajib diisi',
+            'plate_code.required' => 'Plat nomor kendaraan wajib diisi',
+            'plate_code.unique' => 'Plat nomor ini sudah terdaftar di sistem',
+            'color.required' => 'Warna mobil wajib diisi',
+            'transmission.required' => 'Tipe transmisi wajib dipilih',
+            'price_12h.required' => 'Harga sewa 12 jam wajib diisi',
+            'price_12h.numeric' => 'Harga sewa 12 jam harus berupa angka',
+            'price_24h.required' => 'Harga sewa 24 jam wajib diisi',
+            'price_24h.numeric' => 'Harga sewa 24 jam harus berupa angka',
+            'image.image' => 'File yang diupload harus berupa gambar',
+            'image.mimes' => 'Format gambar hanya boleh JPG atau PNG',
+            'image.max' => 'Ukuran gambar maksimal 2 MB',
+        ];
+    }
 }
