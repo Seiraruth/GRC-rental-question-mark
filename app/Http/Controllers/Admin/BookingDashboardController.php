@@ -11,8 +11,11 @@ class BookingDashboardController extends Controller
     public function index()
     {
         $bookings = Booking::with('car')->latest()->paginate(10);
+        $pendingCount = Booking::where('status', 'pending')->count();
+        $activeCount = Booking::where('status', 'confirmed')->count();
+        $completedCount = Booking::where('status', 'completed')->count();
 
-        return view('admin.bookings.index', compact('bookings'));
+        return view('admin.bookings.index', compact('bookings', 'pendingCount', 'activeCount', 'completedCount'));
     }
 
     public function updateStatus(Request $request, Booking $booking)
@@ -21,6 +24,8 @@ class BookingDashboardController extends Controller
             'status' => 'required|in:pending,confirmed,completed,cancelled'
         ]);
 
+        // dd($booking);
+
         // If the admin wants to confirm, please check first whether the car is still there or not?
         if ($request->status == 'confirmed') {
             if (!$booking->car->is_available) {
@@ -28,7 +33,7 @@ class BookingDashboardController extends Controller
             }
 
             // If it's safe, then confirm and lock the car.
-            $booking->update(['status' => 'confirmed']);
+            $booking->update(['status' => 'active']);
             $booking->car->update(['is_available' => false]);
 
             return back()->with('success', 'Booking berhasil dikonfirmasi!');
