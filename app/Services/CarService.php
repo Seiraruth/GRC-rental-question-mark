@@ -30,6 +30,7 @@ class CarService
       'name' => $carDTO->name,
       'plate_code' => $carDTO->plate_code,
       'color' => $carDTO->color,
+      'category' => $carDTO->category,
       'transmission' => $carDTO->transmission,
       'price_12h' => $carDTO->price_12h,
       'price_24h' => $carDTO->price_24h

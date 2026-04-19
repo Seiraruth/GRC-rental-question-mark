@@ -121,12 +121,31 @@
                     <div class="overflow-x-auto">
                         @if ($recentBookings->isEmpty())
                             <div class="p-12 text-center">
-                                <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                <p class="text-gray-500 text-sm">Belum ada data transaksi.</p>
+                                <div class="flex flex-col items-center justify-center">
+                                    <!-- Empty State Illustration -->
+                                    <div
+                                        class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Text Content -->
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                                        Belum ada transaksi
+                                    </h3>
+                                    <p class="text-gray-500 mb-6 max-w-sm mx-auto text-sm">
+                                        Saat ini belum ada data transaksi tercatat. Semua booking yang masuk akan muncul di
+                                        sini.
+                                    </p>
+
+                                    <!-- Helper Tip -->
+                                    <p class="text-sm text-gray-400">
+                                        Anda dapat melihat semua transaksi di halaman Kelola Booking
+                                    </p>
+                                </div>
                             </div>
                         @else
                             <table class="min-w-full">
@@ -158,7 +177,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span
                                                     class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
-                                                                                                                            {{ $booking->status === 'pending' ? 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20' : 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20' }}">
+                                                                                                                                    {{ $booking->status === 'pending' ? 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20' : 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20' }}">
                                                     {{ ucfirst($booking->status) }}
                                                 </span>
                                             </td>

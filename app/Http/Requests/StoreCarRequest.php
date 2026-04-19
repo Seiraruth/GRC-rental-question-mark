@@ -31,6 +31,7 @@ class StoreCarRequest extends FormRequest
                 Rule::unique('cars', 'plate_code')->ignore($this->route('car')),
             ],
             'color' => 'required',
+            'category' => 'required',
             'transmission' => 'required',
             'price_12h' => 'required|numeric',
             'price_24h' => 'required|numeric',
