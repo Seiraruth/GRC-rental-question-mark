@@ -45,6 +45,39 @@
       </main>
     </div>
   </div>
+
+  @if(session('success'))
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Berhasil!',
+          text: @json(session('success')),
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          customClass: {
+            popup: 'rounded-xl shadow-lg border border-emerald-100 bg-white/90 backdrop-blur-md',
+          }
+        });
+      });
+    </script>
+  @endif
+
+  @if(session('error'))
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: @json(session('error')),
+          confirmButtonColor: '#ef4444',
+        });
+      });
+    </script>
+  @endif
 </body>
 
 </html>

@@ -153,8 +153,46 @@
                   </tr>
                 @empty
                   <tr>
-                    <td colspan="10" class="px-6 py-4 text-center text-sm text-gray-500">
-                      Tidak ada data mobil
+                    <td colspan="10" class="px-6 py-16">
+                      <div class="flex flex-col items-center justify-center text-center">
+                        <!-- Empty State Illustration -->
+                        <div class="mb-6">
+                          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z">
+                              </path>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1">
+                              </path>
+                            </svg>
+                          </div>
+                        </div>
+
+                        <!-- Text Content -->
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                          Tidak ada mobil ditemukan
+                        </h3>
+                        <p class="text-gray-500 mb-6 max-w-md">
+                          Saat ini belum ada data mobil yang terdaftar. Anda bisa menambahkan mobil baru dengan klik
+                          tombol di bawah ini.
+                        </p>
+
+                        <!-- Action Button -->
+                        <a href="{{ route('admin.cars.create') }}"
+                          class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md font-medium">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
+                            </path>
+                          </svg>
+                          Tambah Mobil Pertama
+                        </a>
+
+                        <!-- Helper Tip -->
+                        <p class="mt-6 text-sm text-gray-400">
+                          Atau coba ubah filter pencarian di atas
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 @endforelse

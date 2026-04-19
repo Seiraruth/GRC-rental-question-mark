@@ -78,6 +78,17 @@
               @enderror
             </div>
 
+            <!-- Category -->
+            <div class="group">
+              <label for="category" class="block text-sm font-medium text-slate-700 mb-2">Kategori Mobil</label>
+              <input type="text" id="category" name="category" value="{{ old('category') }}"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all duration-200 @error('category') border-red-500 focus:ring-red-500/10 @enderror"
+                placeholder="SUV, MPV, Sedan, Hatchback">
+              @error('category')
+                <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+              @enderror
+            </div>
+
             <!-- Transmission -->
             <div class="group">
               <label for="transmission" class="block text-sm font-medium text-slate-700 mb-2">Transmisi</label>
@@ -98,6 +109,28 @@
                 </label>
               </div>
               @error('transmission')
+                <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+              @enderror
+            </div>
+
+            <!-- Seats -->
+            <div class="group">
+              <label for="seats" class="block text-sm font-medium text-slate-700 mb-2">Jumlah Kursi</label>
+              <input type="number" id="seats" name="seats" value="{{ old('seats', 2) }}" min="1" max="20"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all duration-200 @error('seats') border-red-500 focus:ring-red-500/10 @enderror"
+                placeholder="5">
+              @error('seats')
+                <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+              @enderror
+            </div>
+
+            <!-- Fuel Type -->
+            <div class="group">
+              <label for="fuel_type" class="block text-sm font-medium text-slate-700 mb-2">Jenis Bahan Bakar</label>
+              <input type="text" id="fuel_type" name="fuel_type" value="{{ old('fuel_type', 'Bensin') }}"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all duration-200 @error('fuel_type') border-red-500 focus:ring-red-500/10 @enderror"
+                placeholder="Bensin, Diesel, Hybrid">
+              @error('fuel_type')
                 <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
               @enderror
             </div>
