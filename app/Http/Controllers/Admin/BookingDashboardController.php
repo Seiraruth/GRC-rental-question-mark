@@ -27,7 +27,7 @@ class BookingDashboardController extends Controller
 
         // dd($booking);
 
-        // If the admin wants to confirm, please check first whether the car is still there or not?
+        // Jika admin ingin konfirmasi, cek terlebih dahulu apakah mobil
         if ($request->status == 'confirmed') {
             if (!$booking->car->is_available) {
                 return back()->with('error', 'Gagal! Mobil ini sudah dikonfirmasi untuk pesanan lain.');

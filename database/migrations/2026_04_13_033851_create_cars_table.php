@@ -14,13 +14,16 @@ return new class extends Migration {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('name');               // Ex: "Inova Ribon", "Avanza"
+            $table->string('category');
             $table->string('plate_code')->unique();         // Unique code transfortation: "TRM", "ALZ", "TYV"
             $table->string('color');              // Color transfortation
+
+            $table->integer('seats')->default(2);
             $table->enum('transmission', ['AT', 'MT']);
+            $table->string('fuel_type')->default('Bensin');
 
             $table->integer('price_12h');
             $table->integer('price_24h');
-
             $table->string('image')->nullable();
 
             $table->boolean('is_available')->default(true); // Status Unit
