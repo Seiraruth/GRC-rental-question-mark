@@ -23,7 +23,7 @@
         {{-- Wordmark --}}
         <div class="leading-none">
           <span
-            class="block text-[17px] font-extrabold tracking-tight text-slate-800 group-hover:text-blue-700 transition-colors duration-200">GRC</span>
+            class="block text-[17px] font-extrabold tracking-tight text-slate-800 group-hover:text-blue-700 transition-colors duration-200">Pusat Rentcar Purwakarta</span>
           <span class="block text-[9px] font-semibold tracking-[0.18em] text-blue-600 uppercase">Rental Mobil</span>
         </div>
       </a>

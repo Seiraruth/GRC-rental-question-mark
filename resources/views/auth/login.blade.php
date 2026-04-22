@@ -1,88 +1,89 @@
 <x-guest-layout>
-    <!-- Header -->
-    <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">Login</h1>
-        <p class="text-gray-600 mt-2">Masuk ke akun Anda</p>
+    <div class="w-full max-w-md mx-auto">
+        <!-- Auth Card Container -->
+        <div class="bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200/50 shadow-2xl p-6 sm:p-8 md:p-10">
+
+            <!-- Header -->
+            <div class="mb-8 text-center">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+                    Selamat Datang
+                </h1>
+                <p class="text-slate-500 text-sm md:text-base">
+                    Masukkan kredensial Anda untuk melanjutkan
+                </p>
+            </div>
+
+            <!-- Error Alert -->
+            @error('login_failed')
+                <div class="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p class="text-sm font-semibold text-red-600 mb-1">Terjadi kesalahan</p>
+                    <p class="text-sm text-red-500">{{ $message }}</p>
+                </div>
+            @enderror
+
+            <!-- Success Status -->
+            @if (session('status'))
+                <div class="mb-5 p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-600">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <!-- Login Form -->
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <!-- Username Field -->
+                <div class="mb-4">
+                    <label for="username"
+                        class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                        Username
+                    </label>
+                    <input id="username" type="text" name="username" value="{{ old('username') }}" autofocus
+                        autocomplete="username"
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
+                        placeholder="Masukkan username..." />
+                    @error('username')
+                        <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-4">
+                    <label for="password"
+                        class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                        Password
+                    </label>
+                    <input id="password" type="password" name="password" autocomplete="current-password"
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
+                        placeholder="••••••••" />
+                    @error('password')
+                        <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2">
+                        <input id="remember_me" type="checkbox" name="remember"
+                            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500/20 cursor-pointer" />
+                        <label for="remember_me" class="text-sm text-slate-600 cursor-pointer select-none">
+                            Ingat saya
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="group w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm md:text-base rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:shadow-md flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+                    </svg>
+                    Masuk
+                </button>
+            </form>
+        </div>
     </div>
-
-    <!-- Session Status -->
-    @if ($errors->any())
-        <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p class="text-red-700 text-sm font-semibold">{{ __('Terjadi kesalahan') }}</p>
-            <ul class="mt-2 list-disc list-inside text-red-600 text-sm">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if (session('status'))
-        <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p class="text-green-700 text-sm">{{ session('status') }}</p>
-        </div>
-    @endif
-
-    <!-- Login Form -->
-    <form method="POST" action="{{ route('login') }}" class="space-y-4">
-        @csrf
-
-        <!-- username Address -->
-        <div>
-            <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
-                {{ __('Username') }}
-            </label>
-            <input id="username" type="username" name="username" value="{{ old('username') }}" required autofocus
-                autocomplete="username"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="Masukan identitasmu...." />
-            @error('username')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <!-- Password -->
-        <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                {{ __('Password') }}
-            </label>
-            <input id="password" type="password" name="password" required autocomplete="current-password"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="••••••••" />
-            @error('password')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <!-- Remember Me -->
-        <div class="flex items-center">
-            <input id="remember_me" type="checkbox" name="remember"
-                class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
-            <label for="remember_me" class="ms-2 text-sm text-gray-600 cursor-pointer">
-                {{ __('Ingat saya') }}
-            </label>
-        </div>
-
-        <!-- Login Button -->
-        <button type="submit"
-            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-6">
-            {{ __('Login') }}
-        </button>
-
-        <!-- Forgot Password & Register Links -->
-        <div class="flex items-center justify-between mt-6 text-sm">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}"
-                    class="text-indigo-600 hover:text-indigo-700 font-medium transition">
-                    {{ __('Lupa password?') }}
-                </a>
-            @endif
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-700 font-medium transition">
-                    {{ __('Daftar akun') }}
-                </a>
-            @endif
-        </div>
-    </form>
 </x-guest-layout>

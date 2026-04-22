@@ -2,6 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "start": "concurrently -n APP,VITE -c green,blue \"php artisan serve\" \"vite\"",
+        "serve": "php artisan serve",
         "dev": "vite",
         "build": "vite build",
         "start": "concurrently \"php artisan serve\" \"npm run dev\""

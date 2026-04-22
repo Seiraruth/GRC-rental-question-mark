@@ -1,6 +1,4 @@
-@extends('layouts.guest')
-
-@section('content')
+<x-guest-layout>
     <!-- Header -->
     <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Konfirmasi Password</h1>
@@ -48,4 +46,4 @@
             {{ __('Konfirmasi') }}
         </button>
     </form>
-@endsection
+</x-guest-layout>
