@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome', ['cars' => Car::latest()->take(6)->get()]));
 
+// Route sementara buat ngetes tampilan error
+// Route::get('/test-error', function () {
+//     abort(500);
+// });
+
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/{car:plate_code}', [CarController::class, 'show'])->name('cars.show');
 

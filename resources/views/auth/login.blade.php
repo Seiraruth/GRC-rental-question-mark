@@ -1,170 +1,93 @@
 <x-guest-layout>
+    <div class="w-full max-w-md mx-auto">
+        <!-- Auth Card Container -->
+        <div class="bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200/50 shadow-2xl p-6 sm:p-8 md:p-10">
 
-<style>
-    .auth-heading {
-        font-family: 'Syne', sans-serif;
-        font-weight: 800;
-        font-size: 26px;
-        color: #ffffff;
-        letter-spacing: -0.5px;
-        line-height: 1.2;
-    }
+            <!-- Header -->
+            <div class="mb-8 text-center">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+                    Selamat datang 👋
+                </h1>
+                <p class="text-slate-500 text-sm md:text-base">
+                    Masukkan kredensial Anda untuk melanjutkan
+                </p>
+            </div>
 
-    .auth-subtext {
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 14px;
-        margin-top: 6px;
-    }
+            <!-- Error Alert -->
+            @if ($errors->any())
+                <div class="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p class="text-sm font-semibold text-red-600 mb-2">Terjadi kesalahan</p>
+                    <ul class="list-disc list-inside text-sm text-red-500">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    .auth-label {
-        display: block;
-        font-size: 12px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 8px;
-    }
+            <!-- Success Status -->
+            @if (session('status'))
+                <div class="mb-5 p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-600">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-    .auth-input {
-        width: 100%;
-        padding: 12px 16px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        color: #fff;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 15px;
-        transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        outline: none;
-    }
+            <!-- Login Form -->
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-    .auth-input::placeholder { color: rgba(255, 255, 255, 0.2); }
+                <!-- Username Field -->
+                <div class="mb-4">
+                    <label for="username"
+                        class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                        Username
+                    </label>
+                    <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus
+                        autocomplete="username"
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
+                        placeholder="Masukkan username..." />
+                    @error('username')
+                        <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    .auth-input:focus {
-        border-color: rgba(99, 102, 241, 0.7);
-        background: rgba(99, 102, 241, 0.08);
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-    }
+                <!-- Password Field -->
+                <div class="mb-4">
+                    <label for="password"
+                        class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                        Password
+                    </label>
+                    <input id="password" type="password" name="password" required autocomplete="current-password"
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
+                        placeholder="••••••••" />
+                    @error('password')
+                        <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    .auth-error { margin-top: 6px; font-size: 12px; color: #f87171; }
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2">
+                        <input id="remember_me" type="checkbox" name="remember"
+                            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500/20 cursor-pointer" />
+                        <label for="remember_me" class="text-sm text-slate-600 cursor-pointer select-none">
+                            Ingat saya
+                        </label>
+                    </div>
+                </div>
 
-    .alert-error {
-        margin-bottom: 20px;
-        padding: 14px 16px;
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.25);
-        border-radius: 12px;
-    }
-
-    .alert-error-title { font-size: 13px; font-weight: 600; color: #f87171; margin-bottom: 6px; }
-    .alert-error ul { list-style: disc; list-style-position: inside; font-size: 13px; color: #fca5a5; }
-
-    .alert-success {
-        margin-bottom: 20px;
-        padding: 14px 16px;
-        background: rgba(34, 197, 94, 0.1);
-        border: 1px solid rgba(34, 197, 94, 0.25);
-        border-radius: 12px;
-        font-size: 13px;
-        color: #86efac;
-    }
-
-    .remember-row { display: flex; align-items: center; gap: 8px; }
-    .remember-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: #6366f1; cursor: pointer; }
-    .remember-row label { font-size: 13px; color: rgba(255, 255, 255, 0.45); cursor: pointer; user-select: none; }
-
-    .btn-login {
-        width: 100%;
-        padding: 13px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        border: none;
-        border-radius: 12px;
-        color: #fff;
-        font-family: 'Syne', sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-        box-shadow: 0 6px 24px rgba(99, 102, 241, 0.4);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-login::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(99, 102, 241, 0.55); filter: brightness(1.05); }
-    .btn-login:hover::before { opacity: 1; }
-    .btn-login:active { transform: translateY(0); box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35); }
-
-    .form-divider { height: 1px; background: rgba(255, 255, 255, 0.07); margin: 8px 0; }
-    .field-group { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
-</style>
-
-<!-- Header -->
-<div style="margin-bottom: 28px;">
-    <h1 class="auth-heading">Selamat datang 👋</h1>
-    <p class="auth-subtext">Masukkan kredensial Anda untuk melanjutkan</p>
-</div>
-
-@if ($errors->any())
-    <div class="alert-error">
-        <p class="alert-error-title">Terjadi kesalahan</p>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-@if (session('status'))
-    <div class="alert-success">{{ session('status') }}</div>
-@endif
-
-<form method="POST" action="{{ route('login') }}">
-    @csrf
-
-    <div class="field-group">
-        <div>
-            <label for="username" class="auth-label">Username</label>
-            <input id="username" type="text" name="username" value="{{ old('username') }}"
-                required autofocus autocomplete="username"
-                class="auth-input" placeholder="Masukkan username..." />
-            @error('username')
-                <p class="auth-error">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label for="password" class="auth-label">Password</label>
-            <input id="password" type="password" name="password"
-                required autocomplete="current-password"
-                class="auth-input" placeholder="••••••••" />
-            @error('password')
-                <p class="auth-error">{{ $message }}</p>
-            @enderror
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="group w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm md:text-base rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:shadow-md flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+                    </svg>
+                    Masuk
+                </button>
+            </form>
         </div>
     </div>
-
-    <div class="remember-row" style="margin-bottom: 24px;">
-        <input id="remember_me" type="checkbox" name="remember" />
-        <label for="remember_me">Ingat saya</label>
-    </div>
-
-    <div class="form-divider"></div>
-
-    <button type="submit" class="btn-login" style="margin-top: 20px;">
-        Masuk
-    </button>
-</form>
-
 </x-guest-layout>
