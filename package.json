@@ -5,7 +5,8 @@
         "start": "concurrently -n APP,VITE -c green,blue \"php artisan serve\" \"vite\"",
         "serve": "php artisan serve",
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "start": "concurrently \"php artisan serve\" \"npm run dev\""
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
