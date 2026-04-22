@@ -14,16 +14,12 @@
             </div>
 
             <!-- Error Alert -->
-            @if ($errors->any())
+            @error('login_failed')
                 <div class="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl">
-                    <p class="text-sm font-semibold text-red-600 mb-2">Terjadi kesalahan</p>
-                    <ul class="list-disc list-inside text-sm text-red-500">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    <p class="text-sm font-semibold text-red-600 mb-1">Terjadi kesalahan</p>
+                    <p class="text-sm text-red-500">{{ $message }}</p>
                 </div>
-            @endif
+            @enderror
 
             <!-- Success Status -->
             @if (session('status'))
@@ -42,7 +38,7 @@
                         class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                         Username
                     </label>
-                    <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus
+                    <input id="username" type="text" name="username" value="{{ old('username') }}" autofocus
                         autocomplete="username"
                         class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
                         placeholder="Masukkan username..." />
@@ -57,7 +53,7 @@
                         class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                         Password
                     </label>
-                    <input id="password" type="password" name="password" required autocomplete="current-password"
+                    <input id="password" type="password" name="password" autocomplete="current-password"
                         class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-slate-900 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-gray-300 placeholder:text-slate-400"
                         placeholder="••••••••" />
                     @error('password')
