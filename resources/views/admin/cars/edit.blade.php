@@ -206,11 +206,11 @@
           <div class="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3 sm:justify-end">
             <a href="{{ route('admin.cars.index') }}"
               class="px-6 py-3.5 text-sm font-medium text-slate-600 bg-white rounded-xl border border-slate-200 hover:bg-slate-50 transition-all duration-200 text-center">
-              Cancel
+              Batal
             </a>
             <button type="submit"
               class="px-8 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all duration-200">
-              Perbaharui Data Mobil
+              Perbarui Data Mobil
             </button>
           </div>
         </form>
