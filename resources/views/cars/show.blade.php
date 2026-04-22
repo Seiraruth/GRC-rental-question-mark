@@ -164,15 +164,15 @@
                   <label class="relative">
                     <input type="radio" name="duration_type" value="12" class="hidden peer">
                     <div
-                      class="w-full py-3 px-4 border-2 border-var(--border-light) rounded-lg cursor-pointer peer-checked:border-var(--accent) peer-checked:bg-blue-50 transition-all duration-200 text-center">
-                      <p class="text-sm font-semibold peer-checked:text-var(--accent)">12 Jam</p>
+                      class="w-full py-3 px-4 border-2 border-var(--border-light) rounded-lg cursor-pointer peer-checked:border-var(--accent) peer-checked:bg-gray-400 transition-all duration-200 text-center">
+                      <p class="text-sm font-semibold peer-checked:text-var(--accent) peer-checked:text-white">12 Jam</p>
                     </div>
                   </label>
                   <label class="relative">
                     <input type="radio" name="duration_type" value="24" class="hidden peer">
                     <div
-                      class="w-full py-3 px-4 border-2 border-var(--border-light) rounded-lg cursor-pointer peer-checked:border-var(--accent) peer-checked:bg-blue-50 transition-all duration-200 text-center">
-                      <p class="text-sm font-semibold peer-checked:text-var(--accent)">24 Jam</p>
+                      class="w-full py-3 px-4 border-2 border-var(--border-light) rounded-lg cursor-pointer peer-checked:border-var(--accent) peer-checked:bg-gray-400 transition-all duration-200 text-center">
+                      <p class="text-sm font-semibold peer-checked:text-var(--accent) peer-checked:text-white">24 Jam</p>
                     </div>
                   </label>
                 </div>
