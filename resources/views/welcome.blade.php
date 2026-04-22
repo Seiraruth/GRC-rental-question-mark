@@ -55,7 +55,7 @@
 
                     {{-- Subheadline --}}
                     <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
-                        Nikmati kenyamanan berkendara dengan armada mobil pilihan kami yang modern, terawat, dan siap
+                        Nikmati kenyamanan berkendara dengan unit kendaraan pilihan kami yang modern, terawat, dan siap
                         menemani perjalanan Anda.
                     </p>
 
@@ -87,7 +87,7 @@
                         <div class="text-center lg:text-left">
                             <div class="text-3xl font-extrabold text-white">500<span class="text-blue-400">+</span>
                             </div>
-                            <div class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">Armada Mobil</div>
+                            <div class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">Unit Mobil</div>
                         </div>
                         <div class="w-px bg-slate-700 hidden sm:block"></div>
                         <div class="text-center lg:text-left">
@@ -130,8 +130,8 @@
                                     <circle cx="16.5" cy="17.5" r="2.5" />
                                 </svg>
                             </div>
-                            <h3 class="text-white font-bold text-xl mb-1">GRC Rental Mobil</h3>
-                            <p class="text-slate-400 text-sm mb-6">Armada premium siap melayani</p>
+                            <h3 class="text-white font-bold text-xl mb-1">Pusat Rentcar Purwakarta</h3>
+                            <p class="text-slate-400 text-sm mb-6">Sewa mobil terpercaya di Purwakarta</p>
 
                             {{-- Mini stats --}}
                             <div class="grid grid-cols-2 gap-3">
@@ -199,137 +199,6 @@
 
 
     {{-- ═══════════════════════════════════════════════════════════
-    SEARCH SECTION — Floating card with glassmorphism feel
-    ═══════════════════════════════════════════════════════════ --}}
-    <div class="search-section bg-gray-50 pt-4 pb-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            {{-- Section label --}}
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-slate-800">Temukan Mobil Impian Anda</h2>
-                <p class="text-slate-500 text-sm mt-1">Isi form di bawah untuk mencari ketersediaan kendaraan</p>
-            </div>
-
-            <form action="{{ route('dashboard') }}" method="GET"
-                class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 p-6 md:p-8">
-
-                {{-- Form header --}}
-                <div class="flex items-center gap-3 mb-6 pb-5 border-b border-slate-100">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/20">
-                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.35-4.35" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="font-bold text-slate-800 text-sm">Cari Kendaraan</div>
-                        <div class="text-slate-400 text-xs">Pilih tanggal dan tipe mobil</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {{-- Start Date --}}
-                    <div class="group">
-                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                            Tanggal Mulai
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
-                                </svg>
-                            </div>
-                            <input type="date" name="start_date" required
-                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-200 hover:border-slate-300">
-                        </div>
-                    </div>
-
-                    {{-- End Date --}}
-                    <div class="group">
-                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                            Tanggal Selesai
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
-                                </svg>
-                            </div>
-                            <input type="date" name="end_date" required
-                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-200 hover:border-slate-300">
-                        </div>
-                    </div>
-
-                    {{-- Car Type --}}
-                    <div class="group">
-                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                            Tipe Kendaraan
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M5 17H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1l3-5h10l3 5h1a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />
-                                    <circle cx="7.5" cy="17.5" r="2.5" />
-                                    <circle cx="16.5" cy="17.5" r="2.5" />
-                                </svg>
-                            </div>
-                            <select name="type"
-                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-200 hover:border-slate-300 appearance-none cursor-pointer">
-                                <option value="">Semua Tipe</option>
-                                <option value="SUV">SUV</option>
-                                <option value="Sedan">Sedan</option>
-                                <option value="MPV">MPV</option>
-                                <option value="City Car">City Car</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Submit --}}
-                <div class="mt-6">
-                    <button type="submit"
-                        class="group w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-6 py-4 rounded-2xl font-bold text-base shadow-lg shadow-blue-600/25 hover:shadow-blue-500/35 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2.5">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.35-4.35" />
-                        </svg>
-                        Cari Kendaraan Tersedia
-                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    {{-- ═══════════════════════════════════════════════════════════
     CARS SECTION — Premium card grid
     ═══════════════════════════════════════════════════════════ --}}
     <section class="bg-gray-50 py-20" id="cars">
@@ -339,14 +208,6 @@
             <div class="text-center mb-14">
                 <div
                     class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-4">
-                    <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M5 17H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1l3-5h10l3 5h1a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />
-                        <circle cx="7.5" cy="17.5" r="2.5" />
-                        <circle cx="16.5" cy="17.5" r="2.5" />
-                    </svg>
-                    <span class="text-blue-700 text-xs font-semibold tracking-widest uppercase">Armada Kami</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                     Daftar Mobil <span class="text-blue-600">Tersedia</span>
@@ -503,7 +364,7 @@
                     <span class="text-blue-700 text-xs font-semibold tracking-widest uppercase">Keunggulan Kami</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                    Mengapa Memilih <span class="text-blue-600">GRC?</span>
+                    Mengapa Memilih <span class="text-blue-600">Pusat Rentcar Purwakarta?</span>
                 </h2>
                 <p class="text-lg text-slate-500 max-w-xl mx-auto">
                     Kami berkomitmen memberikan pengalaman rental terbaik dengan standar layanan premium
@@ -530,7 +391,7 @@
                                 <circle cx="16.5" cy="17.5" r="2.5" />
                             </svg>
                         </div>
-                        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Armada Lengkap</h3>
+                        <h3 class="text-lg font-extrabold text-slate-900 mb-2">Unit Kendaraan Lengkap</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">
                             Pilihan mobil terlengkap dari berbagai merek ternama dan dalam kondisi terbaik
                         </p>
@@ -671,7 +532,7 @@
                 Siap Memulai Perjalanan?
             </h2>
             <p class="text-lg text-blue-200 mb-10 max-w-xl mx-auto">
-                Pesan sekarang dan dapatkan pengalaman berkendara terbaik bersama GRC Rental Mobil
+                Pesan sekarang dan dapatkan pengalaman berkendara terbaik bersama   Pusat Rentcar Purwakarta! Unit kendaraan premium, layanan 24/7, dan harga terjangkau menanti Anda.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="document.querySelector('.search-section').scrollIntoView({behavior: 'smooth'})"
