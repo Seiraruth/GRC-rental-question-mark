@@ -39,7 +39,7 @@
           <span
             class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent bg-[length:200%_auto]"
             style="animation: gradient 8s ease infinite;">
-            GRC Rental
+            Pusat Rentcar Purwakarta
           </span>
         </h2>
         <div class="h-px w-full mt-4 bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
@@ -116,7 +116,7 @@
     <!-- Copyright -->
     <div class="text-center space-y-3">
       <p class="text-white/70 text-sm tracking-wide">
-        <span class="text-white/90 font-medium">&copy; 2025 GRC Rental.</span> Semua hak dilindungi undang-undang.
+        <span class="text-white/90 font-medium">&copy; 2026 Pusat Rentcar Purwakarta.</span> Semua hak dilindungi undang-undang.
       </p>
       <p class="text-white/50 text-xs">
         Dibuat dengan ♥ di Indonesia
