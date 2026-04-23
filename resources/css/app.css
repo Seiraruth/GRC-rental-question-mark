@@ -3,23 +3,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --primary: #1a1a1a;
-    --secondary: #2d2d2d;
-    --accent: #0ea5e9;
-    --accent-dark: #0284c7;
-    --accent-light: #06b6d4;
-    --text-dark: #0f172a;
-    --text-muted: #64748b;
-    --border-light: #e2e8f0;
-    --bg-light: #f8fafc;
+@layer base {
+    :root {
+        /* CUSTOMER UI - BLUE SEA */
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 217 91% 60%; /* Blue Sea */
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222 47% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222 47% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 217 91% 60%;
+        --radius: 0.75rem;
+    }
+
+    .theme-admin {
+        /* ADMIN UI - PLANT GREEN */
+        --background: 140 30% 98%;
+        --foreground: 140 50% 5%;
+        --card: 0 0% 100%;
+        --card-foreground: 140 50% 5%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 140 50% 5%;
+        --primary: 142 72% 29%; /* Plant Green */
+        --primary-foreground: 140 30% 98%;
+        --secondary: 140 30% 95%;
+        --secondary-foreground: 142 72% 15%;
+        --muted: 140 20% 92%;
+        --muted-foreground: 140 10% 40%;
+        --accent: 140 30% 95%;
+        --accent-foreground: 142 72% 15%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 140 30% 98%;
+        --border: 140 20% 88%;
+        --input: 140 20% 88%;
+        --ring: 142 72% 29%;
+    }
 }
 
 * {
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    color: var(--text-dark);
+@layer base {
+    * {
+        /* Gunakan CSS murni agar tidak error saat build Vite */
+        border-color: hsl(var(--border) / 1);
+    }
+    body {
+        background-color: hsl(var(--background) / 1);
+        color: hsl(var(--foreground) / 1);
+    }
 }

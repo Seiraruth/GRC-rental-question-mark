@@ -16,7 +16,7 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased bg-gray-50" x-data="{ 
+<body class="theme-admin font-sans antialiased bg-gray-50" x-data="{ 
   sidebarOpen: false, 
   sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true' 
 }" @sidebar-toggle.window="localStorage.setItem('sidebarCollapsed', sidebarCollapsed)">
