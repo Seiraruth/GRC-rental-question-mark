@@ -19,7 +19,7 @@ class CarController extends Controller
 
     public function index(Request $request)
     {
-        $cars = $this->carService->getAllCars($request);
+        $cars = $this->carService->getAllCars($request, 9);
         return view('cars.index', compact('cars'));
     }
 
@@ -69,7 +69,7 @@ class CarController extends Controller
 
     public function indexAdmin(Request $request)
     {
-        $cars = $this->carService->getAllCars($request);
+        $cars = $this->carService->getAllCars($request, 10);
 
         return view('admin.cars.index', compact('cars'));
     }
