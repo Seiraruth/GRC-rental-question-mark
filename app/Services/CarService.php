@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Storage;
 class CarService
 {
 
-  public function getAllCars($request)
+  public function getAllCars($request, int $perPage = 10)
   {
-    return Car::latest()->filter($request->only(['search', 'category', 'seats', 'transmission', 'fuel_type', 'status']))->paginate(10);
+    return Car::latest()->filter($request->only(['search', 'category', 'seats', 'transmission', 'fuel_type', 'status']))->paginate($perPage);
   }
 
   public function getCarByPlate(string $plate): Car
