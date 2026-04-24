@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
 
