@@ -112,29 +112,41 @@
           <h4 class="text-white font-bold text-sm mb-5 tracking-wide">Navigasi</h4>
           <ul class="space-y-3.5">
             @foreach([
-              ['Beranda', route('home'), 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-5'],
-              ['Cari Mobil', route('cars.index') . '#cars', 'M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2M7.5 17.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm9 0a2.5 2.5 0 100-5 2.5 2.5 0 000 5z'],
-              ['Riwayat Pemesanan', route('admin.bookings.index'), 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
-            ] as [$label, $href, $icon])
-              <li>
-                <a href="{{ $href }}"
-                  class="group flex items-center gap-3 transition-all duration-200">
-                  <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
-                    style="background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.15);"
-                    onmouseover="this.style.background='rgba(37,99,235,0.18)'; this.style.borderColor='rgba(37,99,235,0.35)';"
-                    onmouseout="this.style.background='rgba(37,99,235,0.08)'; this.style.borderColor='rgba(37,99,235,0.15)';">
-                    <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="{{ $icon }}" />
-                    </svg>
-                  </div>
-                  <span class="text-sm font-medium transition-colors duration-200"
-                    style="color: #64748b;"
-                    onmouseover="this.style.color='#e2e8f0';"
-                    onmouseout="this.style.color='#64748b';">
-                    {{ $label }}
-                  </span>
-                </a>
-              </li>
+                [
+                  'Beranda', 
+                  route('home'), 
+                  'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-5'
+                ],
+                [
+                  'Cari Mobil', 
+                  route('cars.index') , 
+                  'M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2M7.5 17.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm9 0a2.5 2.5 0 100-5 2.5 2.5 0 000 5z'
+                ],
+                [
+                  'Riwayat Pemesanan', 
+                  route('bookings.check-form'), 
+                  'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'
+                ],
+              ] as [$label, $href, $icon])
+                <li>
+                  <a href="{{ $href }}"
+                    class="group flex items-center gap-3 transition-all duration-200">
+                    <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                      style="background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.15);"
+                      onmouseover="this.style.background='rgba(37,99,235,0.18)'; this.style.borderColor='rgba(37,99,235,0.35)';"
+                      onmouseout="this.style.background='rgba(37,99,235,0.08)'; this.style.borderColor='rgba(37,99,235,0.15)';">
+                      <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="{{ $icon }}" />
+                      </svg>
+                    </div>
+                    <span class="text-sm font-medium transition-colors duration-200"
+                      style="color: #64748b;"
+                      onmouseover="this.style.color='#e2e8f0';"
+                      onmouseout="this.style.color='#64748b';">
+                      {{ $label }}
+                    </span>
+                  </a>
+                </li>
             @endforeach
           </ul>
         </div>
