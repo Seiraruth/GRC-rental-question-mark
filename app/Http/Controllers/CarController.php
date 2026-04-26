@@ -72,7 +72,6 @@ class CarController extends Controller
     public function welcome()
     {
         $cars = Car::latest()->take(6)->get();
-        $features = Car::getHeroFeatures();
-        return view('welcome', compact('cars', 'features'));
+        return view('welcome', compact('cars'));
     }
 }
