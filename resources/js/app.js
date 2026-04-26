@@ -11,3 +11,18 @@ window.flatpickr = flatpickr;
 window.Chart = Chart;
 window.Alpine = Alpine;
 Alpine.start();
+
+// Smooth Scroll for anchor links
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href !== "#" && document.querySelector(href)) {
+                e.preventDefault();
+                document
+                    .querySelector(href)
+                    .scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+});
