@@ -49,4 +49,16 @@ class Booking extends Model
     {
         return $this->belongsTo(User::class, 'admin_id');
     }
+
+    public function scopeForPeriod($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('start_date', [$startDate, $endDate])
+            ->with('car')
+            ->orderBy('start_date');
+    }
+
+    public static function calculateRevenueForPeriod($startDate, $endDate)
+    {
+        return static::forPeriod($startDate, $endDate)->sum('final_total_price');
+    }
 }
